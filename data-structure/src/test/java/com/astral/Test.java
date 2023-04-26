@@ -45,7 +45,7 @@ public class Test {
         //listNode4.next = listNode2;
         //isCircleList(headNode,listNode1,listNode2,listNode3,listNode4);
         //合并两个有序链表
-        List<ListNode> nodeList1 = new ArrayList<>();
+        /*List<ListNode> nodeList1 = new ArrayList<>();
         nodeList1.add(headNode1);
         nodeList1.add(listNode1_1);
         nodeList1.add(listNode1_2);
@@ -57,7 +57,23 @@ public class Test {
         nodeList2.add(listNode2_2);
         nodeList2.add(listNode2_3);
         nodeList2.add(listNode2_4);
-        mergeListNode(nodeList1,nodeList2);
+        mergeListNode(nodeList1,nodeList2);*/
+        /*ListNode tmpNode1 = new ListNode(1);
+        ListNode tmpNode1_1 = new ListNode(2);
+        ListNode tmpNode1_2 = new ListNode(4);
+
+        ListNode tmpNode2 = new ListNode(1);
+        ListNode tmpNode2_1 = new ListNode(3);
+        ListNode tmpNode2_2 = new ListNode(4);
+        List<ListNode> tmpNodeList1 = new ArrayList<>();
+        List<ListNode> tmpNodeList2 = new ArrayList<>();
+        tmpNodeList1.add(tmpNode1);
+        tmpNodeList1.add(tmpNode1_1);
+        tmpNodeList1.add(tmpNode1_2);
+        tmpNodeList2.add(tmpNode2);
+        tmpNodeList2.add(tmpNode2_1);
+        tmpNodeList2.add(tmpNode2_2);
+        mergeListNode(tmpNodeList1,tmpNodeList2);*/
 
     }
 
@@ -103,21 +119,42 @@ public class Test {
         ListNode resultNode = null;
         ListNode curNode1 = null;
         ListNode curNode2 = null;
+        int curList2 = 0;
         for(int i = 0;i < nodeList1.size();){
             curNode1 = nodeList1.get(i);
-            for(int j = 0;j < nodeList2.size();){
+            for(int j = curList2;j < nodeList2.size();){
                 curNode2 = nodeList2.get(j);
                 if(curNode1.val <= curNode2.val){
                     resultNode = curNode1;
                     i++;
+                    curList2 = i - 1 <= 0 ? 0 : i - 1;
+                    resultList.add(resultNode);
+                    resultNode = resultNode.next;
+                    break;
                 }else{
                     resultNode = curNode2;
                     j++;
+                    resultList.add(resultNode);
+                    resultNode = resultNode.next;
                 }
             }
         }
         for(ListNode tmp : resultList){
             System.out.println(tmp.val);
+        }
+    }
+
+    @org.junit.Test
+    public void tmp(){
+        for(int i = 0;i < 5;i++){
+            System.out.println(i);
+            for(int j = 0;j < 5;j++){
+                System.out.println(j);
+                if(j == 3){
+                    break;
+                }
+            }
+            System.out.println("break");
         }
     }
 

@@ -8,4 +8,8 @@ public class ListNode {
         this.val = a;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(this.val) + "," + (null == next ? "tail" : next.toString());
+    }
 }
