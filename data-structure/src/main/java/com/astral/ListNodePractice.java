@@ -9,15 +9,15 @@ public class ListNodePractice {
 
     public static void main(String[] args) {
         //链表倒转
-        //reverseListNode();
+        reverseListNode();
         //判断环形链表
-        //isCircleListNode();
+        isCircleListNode();
         //合并两个有序链表
         mergeListNode();
         //删除倒数第N个节点
-        //deleteLastnNode(2);
+        deleteLastnNode(2);
         //求链表的中间节点
-        //findMidNode();
+        findMidNode();
     }
 
     //链表倒转
