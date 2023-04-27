@@ -1,4 +1,4 @@
-package test.java.com.astral;
+package java.com.astral;
 
 
 import main.java.com.astral.ListNode;
