@@ -1,22 +1,19 @@
 package main.java.com.astral;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ListNodePractice {
 
     public static void main(String[] args) {
-        //链表倒转
+        //链表倒转 leetcode 206
         reverseListNode();
-        //判断环形链表
+        //判断环形链表 leetcode 141
         isCircleListNode();
-        //合并两个有序链表
+        //合并两个有序链表 leetcode 21
         mergeListNode();
-        //删除倒数第N个节点
+        //删除倒数第N个节点 leetcode 19
         deleteLastnNode(2);
-        //求链表的中间节点
+        //求链表的中间节点 leetcode 876
         findMidNode();
     }
 
@@ -61,19 +58,19 @@ public class ListNodePractice {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        System.out.println("init::::::::::"+head.toString());
+        node4.next = node2;
+        //System.out.println("init::::::::::"+head.toString());
 
-        Map<Integer,ListNode> map = new HashMap<>();
+        Set<ListNode> listNodeSet = new HashSet<>();
         ListNode cur = head;
-        while (cur.next != null){
-            if(null != map.get(cur.val)){
-                System.out.println("isCircle:"+cur.val);
+        while (cur != null){
+            if(!listNodeSet.add(cur)){
+                System.out.println("isCircle:");
                 break;
-            }else{
-                map.put(cur.val,cur);
             }
             cur = cur.next;
         }
+
     }
 
     //合并两个有序链表
@@ -163,16 +160,14 @@ public class ListNodePractice {
             size++;
             tmp = tmp.next;
         }
-        ListNode curNode = head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode curNode = dummy;
         for(int i = 1;i < size - n;i++){
-            //System.out.println(curNode.toString());
             curNode = curNode.next;
-            //System.out.println(curNode.toString());
         }
-        //System.out.println(curNode.toString());
         curNode.next = curNode.next.next;
-        //System.out.println(curNode.toString());
-        System.out.println(head.toString());
+        System.out.println(dummy.next.toString());
     }
 
     //求中间节点
@@ -189,10 +184,11 @@ public class ListNodePractice {
         node2.next = node3;
         node3.next = node4;
         System.out.println("init::::::::::"+head.toString());
-
-        ListNode hNode = head;
-        ListNode sNode = head;
-        while(hNode.next != null){
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode hNode = dummy.next;
+        ListNode sNode = dummy.next;
+        while(hNode.next != null && hNode != null){
             hNode = hNode.next.next;
             sNode = sNode.next;
         }
