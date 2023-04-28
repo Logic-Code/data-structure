@@ -44,7 +44,7 @@ public class ListNodePractice {
             reverseTmp.next = prev;
             prev = reverseTmp;
         }
-        System.out.println(head.toString());
+        System.out.println(reverseTmp.toString());
 
     }
 
